@@ -1,0 +1,26 @@
+# create file and write data
+with open('data.txt', 'w') as file:
+    file.write('John,25\n')
+    file.write('Alice,30\n')
+    file.write('Bob,40\n')
+
+# read data from file
+with open('data.txt', 'r') as file:
+    lines = file.readlines()
+    for line in lines:
+        print(line.strip())
+
+# update data in file
+with open('data.txt', 'r+') as file:
+    lines = file.readlines()
+    lines[1] = 'Alice,31\n'
+    file.seek(0)
+    file.writelines(lines)
+
+# delete data from file
+with open('data.txt', 'r+') as file:
+    lines = file.readlines()
+    del lines[2]
+    file.seek(0)
+    file.writelines(lines)
+    file.truncate()
